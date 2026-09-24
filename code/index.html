@@ -13,13 +13,21 @@
     <h2>Simulador de Aritmética WASM / MIPS</h2>
     <div class="inputs">
         <input type="number" id="numA" value="2147483647" placeholder="Operando A">
+        
+        <!-- Seleção da Operação -->
+        <select id="operacao" onchange="atualizarInterfaceOperacao()">
+            <option value="soma">Soma (+)</option>
+            <option value="sub">Subtração (-)</option>
+            <option value="mul">Multiplicação (*)</option>
+        </select>
+
         <input type="number" id="numB" value="1" placeholder="Operando B">
-        <button onclick="executarAnimacao()">Calcular & Animar</button>
+        <button id="btnCalcular" onclick="executarAnimacao()">Calcular & Animar</button>
     </div>
 
     <!-- Linhas de Bits -->
-    <div class="bit-row">
-        <span class="bit-label">Carry In / Out (Vazamento):</span>
+    <div class="bit-row" id="row-carry">
+        <span class="bit-label" id="label-carry">Carry In / Out (Vai um):</span>
         <div class="bits-grid" id="grid-carry"></div>
     </div>
     <div class="bit-row">
@@ -32,7 +40,7 @@
     </div>
     <hr style="border-color: #334155; margin: 15px 0;">
     <div class="bit-row">
-        <span class="bit-label">Resultado (Soma):</span>
+        <span class="bit-label" id="label-resultado">Resultado (32 bits):</span>
         <div class="bits-grid" id="grid-res"></div>
     </div>
 
