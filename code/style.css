@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 950px;
   margin: 0 auto;
   background: #1e293b;
   padding: 25px;
@@ -16,17 +16,31 @@ body {
 
 .inputs {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 25px;
+  flex-wrap: wrap;
 }
 
-input, button {
+input, select, button {
   padding: 10px 15px;
   border-radius: 6px;
   border: 1px solid #334155;
   background: #0f172a;
   color: white;
   font-size: 16px;
+  outline: none;
+}
+
+select {
+  cursor: pointer;
+  background-color: #0f172a;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+input[type="number"] {
+  flex: 1;
+  min-width: 150px;
 }
 
 button {
@@ -34,19 +48,23 @@ button {
   cursor: pointer;
   transition: 0.2s;
   font-weight: bold;
-
 }
+
 button:hover {
   background: #1d4ed8;
 }
-        
+
+button:disabled {
+  background: #475569;
+  cursor: not-allowed;
+}
+
 /* Grid de 32 Bits */
 .bit-row {
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin: 15px 0;
-
 }
 
 .bit-label {
@@ -69,7 +87,7 @@ button:hover {
     border-radius: 3px; 
     font-family: monospace; 
     font-size: 12px;
-    transition: background 0.3s, transform 0.3s;
+    transition: background 0.2s, transform 0.2s;
 }
 
 .bit-box.active {
@@ -81,6 +99,13 @@ button:hover {
 .bit-box.carry {
   background: #eab308;
   color: black;
+  font-weight: bold;
+}
+
+.bit-box.borrow {
+  background: #f97316;
+  color: white;
+  font-weight: bold;
 }
 
 .bit-box.current {
@@ -90,7 +115,7 @@ button:hover {
 }
 
 /* Alerta de Overflow */
- #overflow-alert { 
+#overflow-alert { 
     display: none; 
     background: #ef4444; 
     color: white; 
