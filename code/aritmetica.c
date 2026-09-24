@@ -4,6 +4,9 @@
 // Macro para exportar a função para o WebAssembly
 #define WASM_EXPORT __attribute__((visibility("default")))
 
+// Protótipo da função de teste do Map2Check
+extern int32_t __VERIFIER_nondet_int32(void);
+
 // Soma básica (vulnerável a overflow)
 WASM_EXPORT int32_t soma(int32_t a, int32_t b) {
     return a + b;
@@ -76,3 +79,24 @@ WASM_EXPORT int32_t mul_segura(int32_t a, int32_t b, bool* teve_overflow) {
     // Retorno em x32 (Nota: A multi. completa poderia ser retornada em x64)
     return (int32_t) resultado;
 }
+
+
+
+int main() {
+    // O Map2Check vai gerar valores aleatórios/extremos para 'a' e 'b'
+    int32_t a = __VERIFIER_nondet_int32();
+    int32_t b = __VERIFIER_nondet_int32();
+
+    // 1. Para testar o CONTRAEXEMPLO (a ferramenta DEVE achar a falha na 'soma'):
+    soma(a, b);
+
+    // 2. Depois de validar a falha, comente a linha acima e descomente abaixo
+    // para provar que a 'soma_segura' corrigiu o problema:
+    /*
+    bool overflow = false;
+    soma_segura(a, b, &overflow);
+    */
+
+    return 0;
+}
+
