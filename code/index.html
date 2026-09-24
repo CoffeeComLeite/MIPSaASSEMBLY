@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Visualizador Aritmético WASM - UFRR</title>
+    <!-- GSAP para animações fluidas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+  
+<body>
+<div class="container">
+    <h2>Simulador de Aritmética WASM / MIPS</h2>
+    <div class="inputs">
+        <input type="number" id="numA" value="2147483647" placeholder="Operando A">
+        <input type="number" id="numB" value="1" placeholder="Operando B">
+        <button onclick="executarAnimacao()">Calcular & Animar</button>
+    </div>
 
+    <!-- Linhas de Bits -->
+    <div class="bit-row">
+        <span class="bit-label">Carry In / Out (Vazamento):</span>
+        <div class="bits-grid" id="grid-carry"></div>
+    </div>
+    <div class="bit-row">
+        <span class="bit-label">Operando A (32 bits):</span>
+        <div class="bits-grid" id="grid-a"></div>
+    </div>
+    <div class="bit-row">
+        <span class="bit-label">Operando B (32 bits):</span>
+        <div class="bits-grid" id="grid-b"></div>
+    </div>
+    <hr style="border-color: #334155; margin: 15px 0;">
+    <div class="bit-row">
+        <span class="bit-label">Resultado (Soma):</span>
+        <div class="bits-grid" id="grid-res"></div>
+    </div>
+
+    <!-- Indicador Visual de Overflow -->
+    <div id="overflow-alert">
+        🚨 OVERFLOW DETECTADO! O resultado ultrapassou o limite de 32 bits com sinal.
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
