@@ -71,7 +71,7 @@ WASM_EXPORT int32_t mul_segura(int32_t a, int32_t b, bool* teve_overflow) {
     int64_t resultado = (int64_t) a * (int64_t) b;
 
     // Verificação overflow para x32
-    if (resultado >> INT32_MAX || resultado << INT32_MIN) *teve_overflow = true;
+    if (resultado > INT32_MAX || resultado < INT32_MIN) *teve_overflow = true;
 
     // Retorno em x32 (Nota: A multi. completa poderia ser retornada em x64)
     return (int32_t) resultado;
